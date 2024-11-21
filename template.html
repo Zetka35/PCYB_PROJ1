@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>E-mail od Steam</title>
+    <style>
+        body {
+            background-color: #1b2838;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #2a475e;
+            border-radius: 8px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #1a74d4;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #c7d5e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Witaj, {{username}}!</h1>
+        <p>Kliknij poniższy link, by odzyskać dane logowania do Steam:</p>
+        <a href="{{recovery_link}}" class="button">Wznów odzyskiwanie</a>
+        <p class="footer">
+            Jeśli nie próbujesz odzyskać swoich danych logowania, zignoruj tę wiadomość.
+        </p>
+    </div>
+</body>
+</html>
