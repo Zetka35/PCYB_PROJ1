@@ -2,45 +2,98 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-mail od Steam</title>
     <style>
         body {
-            background-color: #1b2838;
+            background-color: #FFFFFF;
             color: #ffffff;
             font-family: Arial, sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #2a475e;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #212429;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            min-height: 600px;
+        }
+        .logo {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        h1 {
+            font-family: 'Verdana', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #b3b3b3
+        }
+        p {
+            font-family: 'Tahoma', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #ffffff
+        }
+        .button-container {
+            background-color: #17191c;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
         }
         .button {
             display: inline-block;
-            background-color: #1a74d4;
+            background-color: #2564d2;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 25px;
             text-decoration: none;
+            font-size: 18px;
             border-radius: 5px;
-            margin-top: 20px;
         }
         .footer {
             margin-top: 20px;
-            font-size: 12px;
+            font-size: 14px;
             color: #c7d5e0;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .highlight {
+            color: #66c0f4;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Logo -->
+        <img src="https://i.imgur.com/uKEMuDb.png" class="logo" width="100">
+
+        <!-- Welcome Message -->
         <h1>Witaj, {{username}}!</h1>
+
+        <!-- Recovery Instructions -->
         <p>Kliknij poniższy link, by odzyskać dane logowania do Steam:</p>
-        <a href="{{recovery_link}}" class="button">Wznów odzyskiwanie</a>
-        <p class="footer">
-            Jeśli nie próbujesz odzyskać swoich danych logowania, zignoruj tę wiadomość.
+
+        <!-- Recovery Button -->
+        <div class="button-container">
+            <a href="{{recovery_link}}" class="button">WZNÓW ODZYSKIWANIE</a>
+        </div>
+
+        <!-- Additional Information -->
+        <p>
+            Jeśli nie próbujesz odzyskać swoich danych logowania do konta Steam z komputera znajdującego się w regionie
+            <span class="highlight">Mazowieckie, Polska</span>, zignoruj tę wiadomość. Być może inny użytkownik podał niepoprawne dane logowania do swojego konta.
         </p>
+
+        <!-- Closing -->
+        <p class="footer">Pozdrawiamy<br>Zespół Steam</p>
     </div>
 </body>
 </html>
