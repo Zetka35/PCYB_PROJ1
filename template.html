@@ -109,24 +109,23 @@
         </div>
 
         <!-- Welcome Message -->
-        <h1>Witaj, {{username}}!</h1>
-
-        <!-- Recovery Instructions -->
-        <p class="bold-text">Kliknij poniższy link, by odzyskać dane logowania do Steam:</p>
-
-        <!-- Recovery Button -->
-        <div class="button-container">
-            <a href="{{recovery_link}}" class="button">WZNÓW ODZYSKIWANIE</a>
-        </div>
+        <h1>Drogi użytkowniku!</h1>
 
         <!-- Additional Information -->
         <p class="middle">
-            Jeśli nie próbujesz odzyskać swoich danych logowania do konta Steam z komputera znajdującego się w regionie
-            <span class="highlight">Mazowieckie, Polska</span>, zignoruj tę wiadomość. Być może inny użytkownik podał niepoprawne dane logowania do swojego konta.
-        </p>
+            Wykryliśmy podejrzaną próbę logowania na Twoje konto z regionu  <span class="highlight">Bangladesz</span>.
+            Jeżeli to Ty, zignoruj tą wiadomość. Jeżeli to nie Ty, Twoje konto mogło zostać przejęte. Zalecamy jak najszybszą zmianę hasła w celu obrony Twoich danych.
+
+
+        <!-- Recovery Instructions -->
+        <p class="bold-text">Kliknij poniższy link, by zresetować hasło:</p>
+
+        <!-- Recovery Button -->
+        <div class="button-container">
+            <a href="{{recovery_link}}" class="button">ZRESETUJ HASŁO</a>
+        </div>
 
         <div class="vertical-line"></div>
-
         <!-- Closing -->
         <p class="footer">Pozdrawiamy<br>Zespół Steam</p>
     </div>
